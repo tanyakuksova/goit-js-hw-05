@@ -235,27 +235,66 @@
 // console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
 
 
+// _____________________________________________________________________________-
 
 
+// async function getUsers() {
+//     return await fetch('https://jsonplaceholder.typicode.com/users').then(response =>
+//         response.json()
+//     );
+// }
 
-async function getUsers() {
-    return await fetch('https://jsonplaceholder.typicode.com/users').then(response =>
-        response.json()
-    );
-}
-
-const users = await getUsers();
+// const users = await getUsers();
 // // console.log(+users[0].address.geo.lat + +users[0].address.geo.lng);
 // console.log(users.filter((u) => {
 //     return u.address.zipcode.indexOf('-')
 // }));
 
-console.log(users.map((u) => {
-    return {
-        id: u.id,
-        name: u.name,
-        street: u.address.street,
-        geoLat: u.address.geo.lat,
-        companyName: u.company.name
-    }
-}));
+// console.log(users.map((u) => {
+//     return {
+//         id: u.id,
+//         name: u.name,
+//         street: u.address.street,
+//         geoLat: u.address.geo.lat,
+//         companyName: u.company.name
+//     }
+// }));
+
+
+
+async function getCountries() {
+    return await fetch('https://restcountries.com/v3.1/all').then(response =>
+        response.json()
+    );
+}
+
+const country = await getCountries();
+console.log(country[0]);
+// console.log(country[0].idd.root + country[0].idd.suffixes);
+// console.log(country.filter((c) => {
+//     return c.idd.suffixes === undefined
+// }));
+
+// const countryPhone = country.
+//     //     filter((c) => {
+//     //     return c.idd.suffixes === undefined
+//     // }).
+//     flatMap((c) => {
+//         if (!c.idd.suffixes) {
+//             return {
+//                 name: c.name.common,
+//                 code: '-'
+//             }
+//         }
+//         else {
+//             return c.idd.suffixes?.flatMap((s) => {
+//                 return {
+//                     name: c.name.common,
+//                     code: c.idd.root + s
+//                 }
+//             })
+//         }
+//     })
+
+// console.table(countryPhone);
+
